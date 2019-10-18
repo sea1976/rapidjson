@@ -204,6 +204,12 @@ public:
         return Base::EndValue(Base::WriteRawValue(json, length));
     }
 
+    //! Go ahead to next token without actually writing the value to stream
+    bool RawInlineValue(Type type) {
+        PrettyPrefix(type);
+        return Base::EndValue(true);
+    }
+
 protected:
     void PrettyPrefix(Type type) {
         (void)type;

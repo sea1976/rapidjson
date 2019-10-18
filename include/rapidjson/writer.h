@@ -274,6 +274,12 @@ public:
         return EndValue(WriteRawValue(json, length));
     }
 
+    //! Go ahead to next token without actually writing the value to stream
+    bool RawInlineValue(Type type) {
+        Prefix(type);
+        return EndValue(true);
+    }
+
     //! Flush the output stream.
     /*!
         Allows the user to flush the output stream immediately.
